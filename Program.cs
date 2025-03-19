@@ -17,26 +17,26 @@
     class Library
     {
         List<Book> books = new List<Book>();
-        public void addBook(Book book)
+        public void AddBook(Book book)
         {
             books.Add(book);
         }
-        public string SearchForBook(string bookTitleOrAutherName)
+        public string SearchForBook(string titleOrAuthor)
         {
             string availability;
             foreach (Book book in books)
             {
-                if (book.Title == bookTitleOrAutherName || book.Author == bookTitleOrAutherName)
+                if (book.Title == titleOrAuthor || book.Author == titleOrAuthor)
                 {
                     if(book.Available)
                         availability = "Available";
                      else
-                        availability = "Not Availalble";
+                        availability = "Not Available";
                     
                     return $"Book Name Is {book.Title}, The Author Is {book.Author}, ISBN IS {book.ISBN} And The Book Is {availability}";
                 }
             }
-            return $"The Book You Are Looking For [ {bookTitleOrAutherName} ] Is Not Found";
+            return $"The Book You Are Looking For [ {titleOrAuthor} ] Is Not Found";
         }
 
         public string BorrowBook(string bookTitle)
@@ -61,7 +61,7 @@
                     return "Book Returned Successfully.";
                 }
             }
-            return "The Is Already In The Library.";
+            return "The Book Is Already In The Library.";
         }
         internal class Program
         {
@@ -69,9 +69,9 @@
             {
                 Library library = new Library();
 
-                library.addBook(new Book("The Great Gatsby", "F. Scott Filzgerald", "9876543218567", true));
-                library.addBook(new Book("To Kill a Mockingbird", "Harper Lee", "9988776611225", true));
-                library.addBook(new Book("1984", "George Orwell", "3322188376514", false));
+                library.AddBook(new Book("The Great Gatsby", "F. Scott Filzgerald", "9876543218567", true));
+                library.AddBook(new Book("To Kill a Mockingbird", "Harper Lee", "9988776611225", true));
+                library.AddBook(new Book("1984", "George Orwell", "3322188376514", false));
 
                 Console.WriteLine(library.SearchForBook("1984"));
                 Console.WriteLine(library.SearchForBook("2121"));
